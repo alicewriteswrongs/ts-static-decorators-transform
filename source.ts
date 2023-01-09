@@ -4,7 +4,7 @@ const MyDecorator = () => {
   };
 };
 
-export class MyComponent {
+class MyComponent {
   @MyDecorator()
   decoratedProp = 3;
 }
