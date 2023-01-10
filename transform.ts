@@ -95,7 +95,20 @@ const transformer: ts.TransformerFactory<ts.SourceFile> = (context) => {
   };
 };
 
+// reading and printing and whatnot
+
+const underlinedLog = (str: string) => {
+  console.log(str)
+  console.log(Array(str.split("").length + 1).join('-'))
+}
+
 const source = String(fs.readFileSync("./source.ts"));
+
+underlinedLog('Decorator transformation proof-of-concept')
+console.log('');
+
+underlinedLog('First, the original source:')
+console.log(source);
 
 const output = ts.transpileModule(source, {
   compilerOptions: {
@@ -106,4 +119,5 @@ const output = ts.transpileModule(source, {
   },
 });
 
+underlinedLog('And the transformed output:')
 console.log(output.outputText);
