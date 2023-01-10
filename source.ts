@@ -7,4 +7,7 @@ const MyDecorator = () => {
 class MyComponent {
   @MyDecorator()
   decoratedProp = 3;
+
+  @MyDecorator()
+  asecondprop = 3;
 }
