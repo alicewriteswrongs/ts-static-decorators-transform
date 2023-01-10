@@ -12,8 +12,10 @@ const transformer: ts.TransformerFactory<ts.SourceFile> = (context) => {
     const decoratorCalls: ts.Expression[] = [];
 
     /**
-     * first pass through the syntax tree. we add the `__decorate` helper
-     * whenever we encounter a class field which is decorated.
+     * Our visitor to traverse the syntax tree. we add a call to the
+     * `__decorate` helper whenever we encounter a class field which is
+     * decorated, and we also ensure that only undecorated class fields stick
+     * around.
      */
     const decorateHelperVisitor = (node: ts.Node): ts.Node => {
       if (ts.isClassDeclaration(node)) {
